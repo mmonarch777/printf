@@ -41,3 +41,13 @@ int		ft_count(int b)
 	}
 	return (nb + 1);
 }
+
+size_t	ft_strlen(const char *str)
+{
+	size_t	i;
+
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	return (i);
+}

@@ -22,4 +22,6 @@ int 	ft_add_flag(t_struct *flag, long long nb);
 int 	ft_print_negative(t_struct *flag, long long nb, int toch, int shir);
 void 	ft_putnbr_fd(int n, int fd);
 int		ft_count(int b);
+size_t	ft_strlen(const char *str);
+int		ft_print_s(t_struct *flag, va_list arg);
 #endif
