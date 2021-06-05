@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-void 	ft_putnbr_fd(int n, int fd)
+void 	ft_putnbr_fd(long long n, int fd)
 {
 	unsigned int	nb;
 	unsigned int	na;
@@ -50,4 +50,22 @@ size_t	ft_strlen(const char *str)
 	while (str[i] != '\0')
 		i++;
 	return (i);
+}
+
+int	ft_strchr(const char *s, int c)
+{
+	char	*mass;
+	int		i;
+
+	if (!s)
+		return (0);
+	mass = (char *)s;
+	i = 0;
+	while (mass[i] != '\0')
+	{
+		if (mass[i] == (char)c)
+			return (1);
+		i++;
+	}
+	return (0);
 }

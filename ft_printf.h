@@ -20,8 +20,11 @@ int 	ft_type(char **mass, t_struct *flag, va_list arg);
 int		ft_print_d(t_struct *flag, va_list arg);
 int 	ft_add_flag(t_struct *flag, long long nb);
 int 	ft_print_negative(t_struct *flag, long long nb, int toch, int shir);
-void 	ft_putnbr_fd(int n, int fd);
+void 	ft_putnbr_fd(long long n, int fd);
 int		ft_count(int b);
 size_t	ft_strlen(const char *str);
 int		ft_print_s(t_struct *flag, va_list arg);
+int 	ft_print_c(t_struct *flag, va_list arg, char **mass);
+int		ft_print_ptr(t_struct *flag, va_list arg);
+int		ft_strchr(const char *s, int c);
 #endif

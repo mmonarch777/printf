@@ -25,8 +25,11 @@ int 	ft_printf(const char *format, ...)
 	while (*mass)
 	{
 		if (*mass == '%')
+		{
+			mass++;
 			length += ft_parsing_flag(&mass, arg, &flag);
-		if (*mass)
+		}
+		if (*mass && *mass != '%')
 			length += write(1, mass++, 1);
 	}
 	va_end(arg);

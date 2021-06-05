@@ -20,7 +20,6 @@ int  	ft_parsing_flag(char **mass, va_list arg, t_struct *flag)
 {
 	int 		nb;
 
-	(*mass)++;
 	while (ft_isalpha(**mass) != 1)
 	{
 		if (**mass == '-')
@@ -37,8 +36,14 @@ int  	ft_parsing_flag(char **mass, va_list arg, t_struct *flag)
 			flag->precsion = (flag->precsion * 10) + (**mass - 48);
 		if (**mass == '*' && flag->tochka == 1)
 			flag->precsion = va_arg(arg, int);
+		if (**mass == '%')
+			break;
+		if (!(ft_strchr("1234567890*%.-", **mass)))
+			break;
 		(*mass)++;
 	}
+	if (!(ft_strchr("cspdiuxX%", **mass)))
+		return (0);
 	nb = ft_type(mass, flag, arg);
 	return (nb);
 }

@@ -7,11 +7,11 @@ static int ft_no_minus(t_struct *flag, long long nb, int toch, int shir)
 	dlinna = 0;
 	if (flag->zero == 1 && flag->tochka != 1)
 		flag->ch = '0';
-	if (flag->tochka != 1)
+	if (flag->ch == '0')
 		dlinna += write(1, "-", 1);
 	while (shir-- > (toch + 1))
 		dlinna += write(1, &flag->ch, 1);
-	if (flag->tochka == 1)
+	if (flag->ch == ' ')
 		dlinna += write(1, "-", 1);
 	while(toch-- > ft_count(nb))
 		dlinna += write(1, "0", 1);
@@ -31,7 +31,7 @@ static int ft_minus(t_struct *flag, long long nb, int toch, int shir)
 		dlinna += write(1, "0", 1);
 	ft_putnbr_fd(nb, 1);
 	dlinna += ft_count(nb);
-	while(shir-- > (toch + 1))
+	while(shir-- > (toch))
 		dlinna += write(1, &flag->ch, 1);
 	return (dlinna);
 

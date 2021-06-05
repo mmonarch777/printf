@@ -9,6 +9,11 @@ int 	ft_type(char **mass, t_struct *flag, va_list arg)
 		nb = ft_print_d(flag, arg);
 	if (**mass == 's')
 		nb = ft_print_s(flag, arg);
+	if (**mass == 'c' || **mass == '%')
+		nb = ft_print_c(flag, arg, mass);
+	if (**mass == 'p')
+		nb = ft_print_ptr(flag, arg);
+
 	(*mass)++;
 	return (nb);
 }

@@ -36,9 +36,11 @@ int		ft_print_s(t_struct *flag, va_list arg)
 	if (mass == NULL)
 		mass = "(null)";
 	if (flag->precsion > (int)ft_strlen(mass))
-		toch = ft_strlen(mass);
-	else
+		toch = (int)ft_strlen(mass);
+	else if (flag->precsion < (int)ft_strlen(mass) && flag->tochka == 1)
 		toch = flag->precsion;
+	else
+		toch = (int)ft_strlen(mass);
 	if (flag->widht > toch)
 		shir = flag->widht;
 	else
