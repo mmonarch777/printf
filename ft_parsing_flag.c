@@ -16,10 +16,8 @@ static int	ft_isalpha(int a)
 		return (0);
 }
 
-int  	ft_parsing_flag(char **mass, va_list arg, t_struct *flag)
+static void	ft_parsing(char **mass, va_list arg, t_struct *flag)
 {
-	int 		nb;
-
 	while (ft_isalpha(**mass) != 1)
 	{
 		if (**mass == '-')
@@ -42,8 +40,28 @@ int  	ft_parsing_flag(char **mass, va_list arg, t_struct *flag)
 			break;
 		(*mass)++;
 	}
+}
+
+static void	ft_initialize_flag(t_struct *flag)
+{
+	flag->minus = 0;
+	flag->zero = 0;
+	flag->widht = 0;
+	flag->tochka = 0;
+	flag->precsion = 0;
+	flag->type = 0;
+	flag->ch = ' ';
+}
+
+int  	ft_parsing_flag(char **mass, va_list arg)
+{
+	int 		nb;
+	t_struct	flag;
+
+	ft_initialize_flag(&flag);
+	ft_parsing(mass, arg, &flag);
 	if (!(ft_strchr("cspdiuxX%", **mass)))
 		return (0);
-	nb = ft_type(mass, flag, arg);
+	nb = ft_type(mass, &flag, arg);
 	return (nb);
 }

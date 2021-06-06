@@ -13,7 +13,8 @@ int 	ft_type(char **mass, t_struct *flag, va_list arg)
 		nb = ft_print_c(flag, arg, mass);
 	if (**mass == 'p')
 		nb = ft_print_ptr(flag, arg);
-
+//	if (**mass == 'x')
+//		nb = ft_print_XXX(flag, arg);
 	(*mass)++;
 	return (nb);
 }

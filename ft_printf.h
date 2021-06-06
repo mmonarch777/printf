@@ -15,7 +15,7 @@ typedef  struct s_struct
 }		t_struct;
 
 int		ft_printf(const char *format, ...);
-int  	ft_parsing_flag(char **mass, va_list arg, t_struct *flag);
+int  	ft_parsing_flag(char **mass, va_list arg);
 int 	ft_type(char **mass, t_struct *flag, va_list arg);
 int		ft_print_d(t_struct *flag, va_list arg);
 int 	ft_add_flag(t_struct *flag, long long nb);
