@@ -51,6 +51,7 @@ static void	ft_initialize_flag(t_struct *flag)
 	flag->precsion = 0;
 	flag->type = 0;
 	flag->ch = ' ';
+	flag->hex = 'x';
 }
 
 int  	ft_parsing_flag(char **mass, va_list arg)

@@ -27,7 +27,7 @@ void 	ft_putnbr_fd(long long n, int fd)
 	}
 }
 
-int		ft_count(int b)
+int		ft_count(long long b)
 {
 	int 	nb;
 

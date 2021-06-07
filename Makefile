@@ -3,7 +3,8 @@ NAME = libftprintf.a
 SRC =	ft_printf.c			ft_parsing_flag.c			ft_type.c\
 		ft_print_d.c		ft_all.c					ft_add_flag.c\
 		ft_print_negative.c	ft_print_s.c				ft_print_c.c\
-		ft_print_ptr.c
+		ft_print_ptr.c		ft_print_u.c				ft_for_hex.c\
+		ft_print_XXX.c
 
 OBJ = $(patsubst %.c, %.o, $(SRC))
 

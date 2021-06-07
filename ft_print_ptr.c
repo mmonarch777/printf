@@ -1,19 +1,8 @@
 #include "ft_printf.h"
 
-static int ft_count_ptr(unsigned long adres)
-{
-	int 	i;
 
-	i = 0;
-	while (adres > 15)
-	{
-		adres /= 16;
-		i++;
-	}
-	return (i + 1);
-}
 
-static void ft_putnbr_hex(unsigned long adres)
+static void ft_putnbr_hexx(unsigned long adres)
 {
 	unsigned long	copy;
 	unsigned long	i;
@@ -30,11 +19,11 @@ static void ft_putnbr_hex(unsigned long adres)
 	while (i > 1)
 	{
 		nb = adres / i;
-		write(1, &"0123456789abcdef"[nb & 0x0F], 1);
+		write(1, &"0123456789abcdef"[nb], 1);
 		adres %= i;
 		i /= 16;
 	}
-	write(1, &"0123456789abcdef"[adres & 0x0F], 1);
+	write(1, &"0123456789abcdef"[adres], 1);
 }
 
 static int ft_no_minus(unsigned long adres, t_struct *flag, int toch, int shir)
@@ -54,7 +43,7 @@ static int ft_no_minus(unsigned long adres, t_struct *flag, int toch, int shir)
 	while (toch-- > ft_count_ptr(adres))
 		dlina += write(1, "0", 1);
 	dlina += ft_count_ptr(adres);
-	ft_putnbr_hex(adres);
+	ft_putnbr_hexx(adres);
 	return (0);
 }
 
@@ -71,7 +60,7 @@ static int ft_print(unsigned long adres, t_struct *flag, int toch, int shir)
 		shir -= (toch + 2);
 		while (toch-- > ft_count_ptr(adres))
 			dlina += write(1, "0",1);
-		ft_putnbr_hex(adres);
+		ft_putnbr_hexx(adres);
 		dlina += ft_count_ptr(adres);
 		while (shir-- > 0)
 			dlina += write(1, &flag->ch, 1);
