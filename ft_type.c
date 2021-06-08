@@ -17,6 +17,8 @@ int	ft_type(char **mass, t_struct *flag, va_list arg)
 		nb = ft_print_u(flag, arg);
 	if (**mass == 'x' || **mass == 'X')
 		nb = ft_print_XXX(flag, arg, mass);
+	if (!(ft_strchr("cspdiuxX%", **mass)))
+		return (0);
 	(*mass)++;
 	return (nb);
 }

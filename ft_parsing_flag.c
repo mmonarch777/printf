@@ -60,8 +60,6 @@ int	ft_parsing_flag(char **mass, va_list arg)
 
 	ft_initialize_flag(&flag);
 	ft_parsing(mass, arg, &flag);
-	if (!(ft_strchr("cspdiuxX%", **mass)))
-		return (0);
 	nb = ft_type(mass, &flag, arg);
 	return (nb);
 }
