@@ -1,8 +1,8 @@
 #include "ft_printf.h"
 
-int ft_count_ptr(unsigned long adres)
+int	ft_count_ptr(unsigned long adres)
 {
-	int 	i;
+	int	i;
 
 	i = 0;
 	while (adres > 15)
@@ -13,12 +13,11 @@ int ft_count_ptr(unsigned long adres)
 	return (i + 1);
 }
 
-void ft_putnbr_hex(unsigned long adres, t_struct *flag)
+void	ft_putnbr_hex(unsigned long adres, t_struct *flag)
 {
 	unsigned long	copy;
 	unsigned long	i;
-	unsigned long 	nb;
-
+	unsigned long	nb;
 
 	copy = adres;
 	i = 1;
@@ -38,4 +37,3 @@ void ft_putnbr_hex(unsigned long adres, t_struct *flag)
 		i /= 16;
 	}
 }
-

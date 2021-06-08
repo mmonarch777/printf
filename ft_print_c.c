@@ -2,7 +2,7 @@
 
 static int	ft_print(t_struct *flag, char c, int shir)
 {
-	int  len;
+	int	len;
 
 	len = 0;
 	if (flag->minus != 1)
@@ -24,9 +24,9 @@ static int	ft_print(t_struct *flag, char c, int shir)
 
 int 	ft_print_c(t_struct *flag, va_list arg, char **mass)
 {
-	int 	dlinna;
+	int		dlinna;
 	int		shir;
-	char 	c;
+	char	c;
 
 	if (**mass == '%')
 		c = '%';

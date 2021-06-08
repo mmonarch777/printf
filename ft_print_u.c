@@ -18,7 +18,7 @@ static int	ft_no_minus(unsigned int number, t_struct *flag, int toch, int shir)
 	return (len);
 }
 
-static int ft_minus(unsigned int number, t_struct *flag, int toch, int shir)
+static int	ft_minus(unsigned int number, t_struct *flag, int toch, int shir)
 {
 	int	len;
 
@@ -27,7 +27,7 @@ static int ft_minus(unsigned int number, t_struct *flag, int toch, int shir)
 	while (toch-- > ft_count((unsigned int)number))
 		len += write(1, "0", 1);
 	len += ft_count((unsigned int)number);
-	ft_putnbr_fd(number,1);
+	ft_putnbr_fd(number, 1);
 	while (shir-- > 0)
 		len += write(1, &flag->ch, 1);
 	return (0);
@@ -37,8 +37,8 @@ int 	ft_print_u(t_struct *flag, va_list arg)
 {
 	unsigned int	number;
 	int				dlina;
-	int 			toch;
-	int 			shir;
+	int				toch;
+	int				shir;
 
 	dlina = 0;
 	number = va_arg(arg, unsigned int);

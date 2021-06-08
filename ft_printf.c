@@ -4,8 +4,7 @@ int 	ft_printf(const char *format, ...)
 {
 	int			length;
 	char		*mass;
-	va_list 	arg;
-
+	va_list		arg;
 
 	length = 0;
 	mass = (char *)format;

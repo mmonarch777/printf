@@ -21,13 +21,13 @@ static int 	ft_no_minus(t_struct *flag, long long nb, int toch, int shir)
 	return (len);
 }
 
-static int ft_minus(t_struct *flag, long long nb, int toch, int shir)
+static int	ft_minus(t_struct *flag, long long nb, int toch, int shir)
 {
 	int		len;
 
 	len = 0;
 	shir -= toch;
-	while (toch-- > ft_count( nb))
+	while (toch-- > ft_count(nb))
 		len += write(1, "0", 1);
 	if (nb == 0 && flag->tochka == 1 && flag->precsion ==0)
 		len += write(1, " ", 1);
@@ -41,7 +41,7 @@ static int ft_minus(t_struct *flag, long long nb, int toch, int shir)
 	return (len);
 }
 
-static int ft_print_positive(t_struct *flag, long long nb, int toch, int shir)
+static int	ft_print_positive(t_struct *flag, long long nb, int toch, int shir)
 {
 	int		len;
 
@@ -56,8 +56,8 @@ static int ft_print_positive(t_struct *flag, long long nb, int toch, int shir)
 int 	ft_add_flag(t_struct *flag, long long nb)
 {
 	int		toch;
-	int 	shir;
-	int 	summ;
+	int		shir;
+	int		summ;
 
 	if (flag->precsion > ft_count(nb))
 		toch = flag->precsion;

@@ -27,16 +27,16 @@ void 	ft_putnbr_fd(long long n, int fd)
 	}
 }
 
-int		ft_count(long long b)
+int	ft_count(long long b)
 {
-	int 	nb;
+	int	nb;
 
 	nb = 0;
 	if (b < 0)
 		b = -b;
 	while (b >= 10)
 	{
-		b = b/10;
+		b = b / 10;
 		nb++;
 	}
 	return (nb + 1);

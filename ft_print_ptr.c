@@ -1,13 +1,10 @@
 #include "ft_printf.h"
 
-
-
-static void ft_putnbr_hexx(unsigned long adres)
+static void	ft_putnbr_hexx(unsigned long adres)
 {
 	unsigned long	copy;
 	unsigned long	i;
-	unsigned long 	nb;
-
+	unsigned long	nb;
 
 	copy = adres;
 	i = 1;
@@ -26,9 +23,9 @@ static void ft_putnbr_hexx(unsigned long adres)
 	write(1, &"0123456789abcdef"[adres], 1);
 }
 
-static int ft_no_minus(unsigned long adres, t_struct *flag, int toch, int shir)
+static int	ft_no_minus(unsigned long adres, t_struct *flag, int toch, int shir)
 {
-	int 	dlina;
+	int	dlina;
 
 	dlina = 0;
 	if (flag->zero == 1 && flag->tochka != 1)
@@ -47,9 +44,9 @@ static int ft_no_minus(unsigned long adres, t_struct *flag, int toch, int shir)
 	return (0);
 }
 
-static int ft_print(unsigned long adres, t_struct *flag, int toch, int shir)
+static int	ft_print(unsigned long adres, t_struct *flag, int toch, int shir)
 {
-	int 	dlina;
+	int	dlina;
 
 	dlina = 0;
 	if (flag->minus != 1)
@@ -59,7 +56,7 @@ static int ft_print(unsigned long adres, t_struct *flag, int toch, int shir)
 		dlina += write(1, "0x", 2);
 		shir -= (toch + 2);
 		while (toch-- > ft_count_ptr(adres))
-			dlina += write(1, "0",1);
+			dlina += write(1, "0", 1);
 		ft_putnbr_hexx(adres);
 		dlina += ft_count_ptr(adres);
 		while (shir-- > 0)
@@ -70,11 +67,11 @@ static int ft_print(unsigned long adres, t_struct *flag, int toch, int shir)
 
 int	ft_print_ptr(t_struct *flag, va_list arg)
 {
-	unsigned long 	adres;
-	int 			dlina;
-	int 			toch;
-	int 			shir;
-	int 			count;
+	unsigned long	adres;
+	int				dlina;
+	int				toch;
+	int				shir;
+	int				count;
 
 	dlina = 9;
 	adres = va_arg(arg, unsigned long);
@@ -90,4 +87,3 @@ int	ft_print_ptr(t_struct *flag, va_list arg)
 	dlina = ft_print(adres, flag, toch, shir);
 	return (dlina);
 }
-

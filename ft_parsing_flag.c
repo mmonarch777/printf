@@ -28,16 +28,16 @@ static void	ft_parsing(char **mass, va_list arg, t_struct *flag)
 			flag->widht = (flag->widht * 10) + (**mass - 48);
 		if (**mass == '*' && flag->tochka < 1)
 			flag->widht = va_arg(arg, int);
-		if(**mass == '.')
+		if (**mass == '.')
 			flag->tochka = 1;
 		if (ft_isdigit(**mass) && flag->tochka == 1)
 			flag->precsion = (flag->precsion * 10) + (**mass - 48);
 		if (**mass == '*' && flag->tochka == 1)
 			flag->precsion = va_arg(arg, int);
 		if (**mass == '%')
-			break;
+			break ;
 		if (!(ft_strchr("1234567890*%.-", **mass)))
-			break;
+			break ;
 		(*mass)++;
 	}
 }
@@ -49,14 +49,13 @@ static void	ft_initialize_flag(t_struct *flag)
 	flag->widht = 0;
 	flag->tochka = 0;
 	flag->precsion = 0;
-	flag->type = 0;
 	flag->ch = ' ';
 	flag->hex = 'x';
 }
 
-int  	ft_parsing_flag(char **mass, va_list arg)
+int	ft_parsing_flag(char **mass, va_list arg)
 {
-	int 		nb;
+	int			nb;
 	t_struct	flag;
 
 	ft_initialize_flag(&flag);

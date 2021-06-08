@@ -11,22 +11,22 @@ static int	ft_no_minus(unsigned int nb, t_struct *flag, int toch, int shir)
 			flag->ch = '0';
 		len += write(1, &flag->ch, 1);
 	}
-	while (toch-- > ft_count_ptr((unsigned  int)nb))
-		len += write(1, "0",1);
+	while (toch-- > ft_count_ptr((unsigned int)nb))
+		len += write(1, "0", 1);
 	ft_putnbr_hex((unsigned int)nb, flag);
-	len += ft_count_ptr((unsigned  int)nb);
+	len += ft_count_ptr((unsigned int)nb);
 	return (len);
 }
 
-static int ft_minus(unsigned int nb, t_struct *flag, int toch, int shir)
+static int	ft_minus(unsigned int nb, t_struct *flag, int toch, int shir)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	shir -= toch;
-	while (toch-- > ft_count_ptr((unsigned  int)nb))
+	while (toch-- > ft_count_ptr((unsigned int)nb))
 		len += write(1, "0", 1);
-	len += ft_count_ptr((unsigned  int)nb);
+	len += ft_count_ptr((unsigned int)nb);
 	ft_putnbr_hex((unsigned int)nb, flag);
 	while (shir-- > 0)
 		len += write(1, &flag->ch, 1);
@@ -37,8 +37,8 @@ int	ft_print_XXX(t_struct *flag, va_list arg, char **mass)
 {
 	unsigned int	nb;
 	int				dlina;
-	int 			toch;
-	int 			shir;
+	int				toch;
+	int				shir;
 
 	nb = va_arg(arg, int);
 	if (!nb && flag->tochka == 1 && flag->precsion == 0)

@@ -1,8 +1,8 @@
 #include "ft_printf.h"
 
-int 	ft_type(char **mass, t_struct *flag, va_list arg)
+int	ft_type(char **mass, t_struct *flag, va_list arg)
 {
-	int 	nb;
+	int	nb;
 
 	nb = 0;
 	if (**mass == 'd' || **mass == 'i')

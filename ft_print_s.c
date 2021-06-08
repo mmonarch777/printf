@@ -1,8 +1,8 @@
 #include "ft_printf.h"
 
-static int ft_print(t_struct *flag, char *mass, int toch, int shir)
+static int	ft_print(t_struct *flag, char *mass, int toch, int shir)
 {
-	int lenght;
+	int	lenght;
 
 	lenght = 0;
 	if (flag->minus != 1)
@@ -25,12 +25,12 @@ static int ft_print(t_struct *flag, char *mass, int toch, int shir)
 	return (lenght);
 }
 
-int		ft_print_s(t_struct *flag, va_list arg)
+int	ft_print_s(t_struct *flag, va_list arg)
 {
-	int 	dlinna;
-	char 	*mass;
-	int 	toch;
-	int 	shir;
+	int		dlinna;
+	char	*mass;
+	int		toch;
+	int		shir;
 
 	mass = va_arg(arg, char *);
 	if (mass == NULL)
@@ -48,4 +48,3 @@ int		ft_print_s(t_struct *flag, va_list arg)
 	dlinna = ft_print(flag, mass, toch, shir);
 	return (dlinna);
 }
-
