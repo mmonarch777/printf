@@ -53,20 +53,35 @@ static int	ft_print_positive(t_struct *flag, long long nb, int toch, int shir)
 	return (len);
 }
 
+static void	ft_start(long long nb, t_struct *flag, int *toch, int *shir)
+{
+	if (flag->precsion < 0)
+	{
+		flag->tochka = 0;
+		*toch = ft_count(nb);
+	}
+	else if (flag->precsion > ft_count(nb))
+		*toch = flag->precsion;
+	else
+		*toch = ft_count(nb);
+	if (flag->widht < 0)
+	{
+		flag->minus = 1;
+		flag->widht = -flag->widht;
+	}
+	if (flag->widht > *toch)
+		*shir = flag-> widht;
+	else
+		*shir = *toch;
+}
+
 int 	ft_add_flag(t_struct *flag, long long nb)
 {
 	int		toch;
 	int		shir;
 	int		summ;
 
-	if (flag->precsion > ft_count(nb))
-		toch = flag->precsion;
-	else
-		toch = ft_count(nb);
-	if (flag->widht > toch)
-		shir = flag-> widht;
-	else
-		shir = toch;
+	ft_start(nb, flag, &toch, &shir);
 	if (nb >= 0)
 		summ = ft_print_positive(flag, nb, toch, shir);
 	else

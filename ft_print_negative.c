@@ -25,13 +25,13 @@ static int	ft_minus(t_struct *flag, long long nb, int toch, int shir)
 	int		dlinna;
 
 	dlinna = 0;
-	shir -= toch;
+	shir -= (toch + 1);
 	dlinna += write(1, "-", 1);
 	while (toch-- > ft_count(nb))
 		dlinna += write(1, "0", 1);
 	ft_putnbr_fd(nb, 1);
 	dlinna += ft_count(nb);
-	while (shir-- > (toch))
+	while (shir-- > 0)
 		dlinna += write(1, &flag->ch, 1);
 	return (dlinna);
 }

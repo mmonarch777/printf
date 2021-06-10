@@ -32,6 +32,11 @@ int 	ft_print_c(t_struct *flag, va_list arg, char **mass)
 		c = '%';
 	else
 		c = va_arg(arg, int);
+	if (flag->widht < 0)
+	{
+		flag->minus = 1;
+		flag->widht = -flag->widht;
+	}
 	if (flag->widht > 1)
 		shir = flag->widht;
 	else

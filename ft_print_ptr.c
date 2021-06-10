@@ -39,9 +39,9 @@ static int	ft_no_minus(unsigned long adres, t_struct *flag, int toch, int shir)
 		dlina += write(1, "0x", 2);
 	while (toch-- > ft_count_ptr(adres))
 		dlina += write(1, "0", 1);
-	dlina += ft_count_ptr(adres);
 	ft_putnbr_hexx(adres);
-	return (0);
+	dlina += ft_count_ptr(adres);
+	return (dlina);
 }
 
 static int	ft_print(unsigned long adres, t_struct *flag, int toch, int shir)
@@ -71,15 +71,19 @@ int	ft_print_ptr(t_struct *flag, va_list arg)
 	int				dlina;
 	int				toch;
 	int				shir;
-	int				count;
 
-	dlina = 9;
 	adres = va_arg(arg, unsigned long);
-	count = ft_count_ptr(adres);
-	if (flag->precsion > count)
+	if (!adres && flag->tochka == 1 && flag->precsion == 0 && flag->widht == 0)
+		return (0);
+	if (flag->precsion > ft_count_ptr(adres))
 		toch = flag->precsion;
 	else
-		toch = count;
+		toch = ft_count_ptr(adres);
+	if (flag->widht < 0)
+	{
+		flag->minus = 1;
+		flag->widht = -flag->widht;
+	}
 	if (flag->widht > toch)
 		shir = flag->widht;
 	else
