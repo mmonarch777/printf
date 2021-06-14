@@ -48,7 +48,7 @@ static void	ft_start(unsigned int nb, t_struct *flag, int *toch, int *shir)
 	if (flag->precsion < 0)
 	{
 		flag->tochka = 0;
-		*toch = ft_count((unsigned int)nb);
+		*toch = ft_count_ptr((unsigned int)nb);
 	}
 	if (flag->precsion > ft_count_ptr((unsigned int)nb))
 		*toch = flag->precsion;

@@ -39,7 +39,10 @@ static int	ft_no_minus(unsigned long adres, t_struct *flag, int toch, int shir)
 		dlina += write(1, "0x", 2);
 	while (toch-- > ft_count_ptr(adres))
 		dlina += write(1, "0", 1);
-	ft_putnbr_hexx(adres);
+	if (adres)
+		ft_putnbr_hexx(adres);
+	else if (flag->tochka != 1)
+		ft_putnbr_hexx(adres);
 	dlina += ft_count_ptr(adres);
 	return (dlina);
 }
@@ -57,12 +60,39 @@ static int	ft_print(unsigned long adres, t_struct *flag, int toch, int shir)
 		shir -= (toch + 2);
 		while (toch-- > ft_count_ptr(adres))
 			dlina += write(1, "0", 1);
-		ft_putnbr_hexx(adres);
+		if (adres)
+			ft_putnbr_hexx(adres);
+		else if (flag->tochka != 1)
+			ft_putnbr_hexx(adres);
 		dlina += ft_count_ptr(adres);
 		while (shir-- > 0)
 			dlina += write(1, &flag->ch, 1);
 	}
 	return (dlina);
+}
+
+static void	ft_start(unsigned long adres, t_struct *flag, int *toch, int *shir)
+{
+	if (flag->precsion < 0)
+	{
+		flag->tochka = 0;
+		*toch = ft_count_ptr(adres);
+	}
+	else if (flag->precsion > ft_count_ptr(adres))
+		*toch = flag->precsion;
+	else if (!adres && flag->tochka == 1)
+		*toch = flag->precsion;
+	else
+		*toch = ft_count_ptr(adres);
+	if (flag->widht < 0)
+	{
+		flag->minus = 1;
+		flag->widht = -flag->widht;
+	}
+	if (flag->widht > *toch)
+		*shir = flag->widht;
+	else
+		*shir = *toch;
 }
 
 int	ft_print_ptr(t_struct *flag, va_list arg)
@@ -74,20 +104,8 @@ int	ft_print_ptr(t_struct *flag, va_list arg)
 
 	adres = va_arg(arg, unsigned long);
 	if (!adres && flag->tochka == 1 && flag->precsion == 0 && flag->widht == 0)
-		return (0);
-	if (flag->precsion > ft_count_ptr(adres))
-		toch = flag->precsion;
-	else
-		toch = ft_count_ptr(adres);
-	if (flag->widht < 0)
-	{
-		flag->minus = 1;
-		flag->widht = -flag->widht;
-	}
-	if (flag->widht > toch)
-		shir = flag->widht;
-	else
-		shir = toch;
+		return ((int)write(1, "0x", 2));
+	ft_start(adres, flag, &toch, &shir);
 	dlina = ft_print(adres, flag, toch, shir);
 	return (dlina);
 }
